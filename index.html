@@ -13,21 +13,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<style>
-  body {
-    font-family: 'Inter', sans-serif;
-  }
-
-  h1, h2, h3 {
-    font-weight: 700;
-  }
-
-  p {
-    font-weight: 400;
-  }
-</style>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,7 +24,6 @@
     --teal-light: #E1F5EE;
     --teal-fog: #F1FBF7;
     --cream: #F8F4ED;
-    --sand: #EFE8DD;
     --charcoal: #262521;
     --mid: #5D5B55;
     --soft: #9B978D;
@@ -51,9 +37,8 @@
 
   html { scroll-behavior: smooth; }
 
- body {
-  font-family: 'Inter', sans-serif;
-}
+  body {
+    font-family: "DM Sans", sans-serif;
     background:
       radial-gradient(circle at top right, rgba(29, 158, 117, 0.10), transparent 34%),
       linear-gradient(180deg, #FBF8F3 0%, var(--cream) 42%, #F7F1E7 100%);
@@ -171,7 +156,7 @@
   .hero {
     max-width: 1180px;
     margin: 0 auto;
-    min-height: 88vh;
+    min-height: 84vh;
     display: grid;
     grid-template-columns: 1.08fr 0.92fr;
     align-items: center;
@@ -287,7 +272,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
     overflow: hidden;
   }
 
@@ -385,9 +369,7 @@
     max-width: 700px;
   }
 
-  .services {
-    background: var(--white);
-  }
+  .services { background: var(--white); }
 
   .services-head,
   .faq-head,
@@ -406,21 +388,20 @@
     margin: 0 auto;
   }
 
-  .trust-grid,
   .services-grid,
   .reasons-grid,
   .faq-grid,
-  .stats-grid {
+  .trust-grid,
+  .value-grid,
+  .guarantee-grid {
     display: grid;
     gap: 1.3rem;
   }
 
   .trust-grid,
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .services-grid {
+  .services-grid,
+  .value-grid,
+  .guarantee-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 
@@ -428,7 +409,7 @@
   .reason-card,
   .faq-card,
   .trust-card,
-  .stat-card,
+  .value-card,
   .guarantee-card {
     background: var(--white);
     border: 1px solid rgba(0,0,0,0.07);
@@ -441,42 +422,20 @@
     background: linear-gradient(180deg, rgba(241, 251, 247, 0.9) 0%, rgba(255,255,255,0.95) 100%);
   }
 
-  .trust-card,
-  .stat-card {
-    text-align: center;
-  }
-
   .trust-card strong,
-  .stat-card strong {
+  .value-card strong {
     display: block;
     font-family: "Fraunces", serif;
-    font-size: 1.45rem;
+    font-size: 1.22rem;
     margin-bottom: 0.45rem;
   }
 
   .trust-card span,
-  .stat-card span {
+  .value-card span {
     color: var(--mid);
     font-size: 0.92rem;
     line-height: 1.6;
     display: block;
-  }
-
-  .logo-row {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-
-  .logo-slot {
-    background: rgba(255,255,255,0.8);
-    border: 1px dashed rgba(0,0,0,0.18);
-    border-radius: 16px;
-    padding: 1rem;
-    text-align: center;
-    color: var(--soft);
-    font-size: 0.9rem;
   }
 
   .service-icon {
@@ -503,7 +462,8 @@
   .service-card p,
   .reason-card p,
   .faq-card p,
-  .guarantee-card p {
+  .guarantee-card p,
+  .trust-card p {
     color: var(--mid);
     line-height: 1.65;
     font-size: 0.94rem;
@@ -658,14 +618,7 @@
     font-size: 0.94rem;
   }
 
-  .guarantee-grid {
-    max-width: var(--container);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-  }
-
+  .guarantee-grid,
   .faq-grid { grid-template-columns: repeat(2, 1fr); }
 
   .contact {
@@ -704,16 +657,8 @@
     margin-right: 0.45rem;
   }
 
-  .contact-form {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+  .contact-form { display: grid; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
   .form-input {
     width: 100%;
@@ -728,15 +673,6 @@
   .form-input::placeholder { color: rgba(255,255,255,0.42); }
   .form-input:focus { outline: none; border-color: #7DE5C0; }
   select.form-input option { background: var(--charcoal); color: var(--white); }
-
-  input[type="date"].form-input {
-    appearance: none;
-    -webkit-appearance: none;
-    min-height: 52px;
-  }
-
-  input[type="date"].form-input::-webkit-date-and-time-value { text-align: left; }
-  input[type="date"].form-input::-webkit-calendar-picker-indicator { opacity: 0.85; cursor: pointer; }
 
   .form-submit {
     width: 100%;
@@ -803,9 +739,7 @@
 
   .footer-contact-item:hover,
   .footer-links a:hover,
-  .footer-social:hover {
-    color: var(--white);
-  }
+  .footer-social:hover { color: var(--white); }
 
   .footer-socials {
     display: flex;
@@ -835,18 +769,13 @@
     .steps-grid,
     .faq-grid,
     .guarantee-grid,
-    .footer-inner {
-      grid-template-columns: 1fr;
-    }
+    .footer-inner { grid-template-columns: 1fr; }
 
     .services-grid,
     .reasons-grid,
     .trust-grid,
-    .stats-grid,
-    .logo-row,
-    .hero-proof {
-      grid-template-columns: 1fr 1fr;
-    }
+    .value-grid,
+    .hero-proof { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 768px) {
@@ -870,16 +799,9 @@
     .reasons-grid,
     .faq-grid,
     .trust-grid,
-    .stats-grid,
-    .logo-row,
-    .hero-proof {
-      grid-template-columns: 1fr;
-    }
-
-    input[type="date"].form-input {
-      width: 100%;
-      min-width: 0;
-    }
+    .value-grid,
+    .hero-proof,
+    .guarantee-grid { grid-template-columns: 1fr; }
 
     .topbar { font-size: 0.78rem; }
   }
@@ -897,7 +819,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#trust">Why Getcleanr</a></li>
+    <li><a href="#why">Why Getcleanr</a></li>
     <li><a href="#included">What's included</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -907,55 +829,55 @@
 
 <section class="hero">
   <div class="hero-copy">
-    <div class="hero-badge">Calgary cleaning for busy homeowners and serious business operators</div>
-    <h1>Reliable <em>Calgary cleaning services</em> that keep your home or workplace consistently ready.</h1>
-    <p>Getcleanr helps Calgary homeowners, renters, landlords, and businesses stay on top of cleaning without chasing cleaners, waiting days for replies, or settling for inconsistent work. From recurring house cleaning to office and move-out cleaning, we focus on dependable service, clear communication, and a space that feels properly looked after.</p>
+    <div class="hero-badge">Calgary cleaning for homes, condos, offices, and move-outs</div>
+    <h1>Reliable <em>Calgary cleaning services</em> with faster quotes and clearer communication.</h1>
+    <p>Getcleanr helps Calgary homeowners, renters, landlords, and businesses keep their spaces clean without the usual hassle. Whether you need recurring house cleaning, a deep clean, office cleaning, or move-out cleaning, the goal is simple: dependable service, straightforward communication, and a cleaner space that feels taken care of.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#contact">Get your fast quote</a>
       <a class="btn-secondary" href="#services">View services</a>
     </div>
     <div class="hero-micro">
       <span>Insured and bonded</span>
-      <span>Fast quote replies</span>
-      <span>Custom cleaning plans</span>
       <span>Residential and commercial</span>
+      <span>Custom cleaning plans</span>
+      <span>Local Calgary service</span>
     </div>
     <div class="hero-proof">
       <div class="hero-proof-card">
-        <strong>Homes and condos</strong>
-        <span>Routine cleaning that helps you stay ahead instead of catching up.</span>
+        <strong>For busy homes</strong>
+        <span>Recurring and deep cleaning that helps people stay ahead instead of catching up.</span>
       </div>
       <div class="hero-proof-card">
-        <strong>Offices and businesses</strong>
-        <span>Clean, polished spaces for staff, tenants, and clients.</span>
+        <strong>For business spaces</strong>
+        <span>Clean, polished environments for staff, visitors, tenants, and day-to-day operations.</span>
       </div>
       <div class="hero-proof-card">
-        <strong>Move-outs and turnovers</strong>
-        <span>Detailed cleaning for inspections, handoffs, listings, and new occupants.</span>
+        <strong>For turnovers</strong>
+        <span>Move-out and handoff cleaning for rentals, listings, inspections, and transitions.</span>
       </div>
     </div>
   </div>
 
   <div class="hero-panel">
     <div class="panel-art">
-      <div class="panel-kicker">What makes us different</div>
-      <div class="panel-title">A cleaner space is expected. The real difference is reliability.</div>
+      <div class="panel-kicker">Why this page works harder</div>
+      <div class="panel-title">Clear offer. Clear services. Clear next step.</div>
       <div class="panel-grid">
         <div class="panel-chip">
-          <strong>Clear communication</strong>
-          <span>Quick replies, straightforward quotes, and fewer surprises.</span>
+          <strong>Specific CTA</strong>
+          <span>One clear primary action instead of vague button language.</span>
         </div>
         <div class="panel-chip">
-          <strong>Dependable scheduling</strong>
-          <span>Service built for real homes, offices, and property turnovers.</span>
+          <strong>Scannable value</strong>
+          <span>Short blocks that explain who the service is for and why it matters.</span>
         </div>
         <div class="panel-chip">
-          <strong>Tailored scope</strong>
-          <span>Quotes based on your space, priorities, and service type.</span>
+          <strong>Trust without fluff</strong>
+          <span>No fake reviews, no invented stats, no hollow chest-beating.</span>
         </div>
         <div class="panel-chip">
-          <strong>Calgary-focused service</strong>
-          <span>Local coverage across downtown, NW, SW, SE, and nearby areas.</span>
+          <strong>Mobile-friendly layout</strong>
+          <span>Important information stays high on the page with clear hierarchy.</span>
         </div>
       </div>
     </div>
@@ -964,63 +886,56 @@
 
 <div class="proof-strip">
   <div class="proof-inner">
-    <div class="proof-item"><strong>Fast quote process</strong> for homes, offices, condos, and move-outs</div>
-    <div class="proof-item"><strong>Flexible service options</strong> from recurring cleaning to one-time detailed work</div>
-    <div class="proof-item"><strong>Built for Calgary</strong> with service tailored to the way local homes and businesses operate</div>
+    <div class="proof-item"><strong>Get a quote quickly</strong> with a simple path from landing to inquiry</div>
+    <div class="proof-item"><strong>Choose the right service</strong> with clearer positioning for each job type</div>
+    <div class="proof-item"><strong>Book local Calgary cleaning</strong> for homes, offices, condos, and move-outs</div>
   </div>
 </div>
 
-<section id="trust">
+<section id="why">
   <div class="section-wrap">
     <div class="trust-head">
-      <div class="section-tag">Trust and proof</div>
-      <h2>Built to feel like the <em>safe choice</em> before you even book.</h2>
-      <p class="section-sub">Cleaning is a trust business. People want a company that answers, shows up, and does the job properly. This section is structured so you can drop in real proof as you collect it.</p>
+      <div class="section-tag">Why Getcleanr</div>
+      <h2>Trust-building that does not rely on fake numbers or made-up testimonials</h2>
+      <p class="section-sub">This section is intentionally honest. It leans on clarity, legitimacy, and relevance instead of claims you cannot prove.</p>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <strong>4.9★</strong>
-        <span>Google rating placeholder<br>Replace with your real average rating.</span>
-      </div>
-      <div class="stat-card">
-        <strong>250+</strong>
-        <span>Cleans completed placeholder<br>Use real volume once tracked.</span>
-      </div>
-      <div class="stat-card">
-        <strong>24h</strong>
-        <span>Fast quote turnaround positioning<br>Keep only if operationally true.</span>
-      </div>
-      <div class="stat-card">
-        <strong>Insured</strong>
-        <span>Bonded and covered for residential and commercial work.</span>
-      </div>
-    </div>
-
-    <div class="trust-grid" style="margin-top: 1.4rem;">
+    <div class="trust-grid">
       <div class="trust-card">
-        <strong>“Easy to deal with from start to finish.”</strong>
-        <span>Testimonial placeholder for a homeowner or condo client.</span>
+        <strong>Insured and bonded</strong>
+        <p>One of the first things people look for when hiring cleaners for their home or business.</p>
       </div>
       <div class="trust-card">
-        <strong>“Reliable service and fast communication.”</strong>
-        <span>Testimonial placeholder for an office or commercial client.</span>
+        <strong>Clear communication</strong>
+        <p>Quotes, scheduling, and service expectations should be easy to understand from the start.</p>
       </div>
       <div class="trust-card">
-        <strong>“Exactly what we needed before handover.”</strong>
-        <span>Testimonial placeholder for a move-out, landlord, or realtor client.</span>
+        <strong>Local Calgary service</strong>
+        <p>Service positioned for downtown, NW, SW, SE, and surrounding Calgary areas.</p>
       </div>
       <div class="trust-card">
-        <strong>Trusted in Calgary</strong>
-        <span>Add real review snippets, verified client names, or company logos here.</span>
+        <strong>Residential and commercial</strong>
+        <p>Structured for homes, condos, offices, and move-out projects instead of a generic one-size-fits-all message.</p>
       </div>
     </div>
 
-    <div class="logo-row">
-      <div class="logo-slot">Client logo / property manager</div>
-      <div class="logo-slot">Client logo / office tenant</div>
-      <div class="logo-slot">Client logo / business</div>
-      <div class="logo-slot">Client logo / realtor partner</div>
+    <div class="value-grid" style="margin-top: 1.4rem;">
+      <div class="value-card">
+        <strong>Fast quote path</strong>
+        <span>Visitors should understand what you do and how to ask for pricing within seconds.</span>
+      </div>
+      <div class="value-card">
+        <strong>Specific service labels</strong>
+        <span>People scan. The page now makes it easier to spot house cleaning, office cleaning, and move-out cleaning right away.</span>
+      </div>
+      <div class="value-card">
+        <strong>Less generic messaging</strong>
+        <span>The copy focuses on outcomes people actually care about: dependability, clarity, and a cleaner space.</span>
+      </div>
+      <div class="value-card">
+        <strong>Ready for real proof later</strong>
+        <span>When you have real Google reviews or client logos, you can add them without rebuilding the page.</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1029,19 +944,19 @@
   <div class="section-wrap">
     <div class="services-head">
       <div class="section-tag">Services</div>
-      <h2>Calgary cleaning services built around how the space is actually used</h2>
-      <p class="section-sub">You do not need a vague cleaning package. You need the right level of service for the property, the people using it, and the standard you want maintained. That is how we structure our work at Getcleanr.</p>
+      <h2>Calgary cleaning services built around the job that actually needs doing</h2>
+      <p class="section-sub">Most visitors are trying to answer one question fast: “Do these people handle my kind of cleaning?” This section answers that clearly and without wasted words.</p>
     </div>
 
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">🏠</div>
         <h3>Recurring house cleaning Calgary</h3>
-        <p>For busy homeowners and renters who want a clean kitchen, bathrooms, and living space without spending their evenings catching up on chores.</p>
+        <p>For busy homeowners and renters who want kitchens, bathrooms, bedrooms, and living areas kept under control on an ongoing basis.</p>
         <ul class="service-list">
           <li>Best for weekly, bi-weekly, or monthly upkeep</li>
-          <li>Keeps your home consistently guest-ready and easier to manage</li>
-          <li>Good fit for families, professionals, and repeat service</li>
+          <li>Helps reduce buildup and constant reset work</li>
+          <li>Good fit for families and working professionals</li>
         </ul>
         <span class="service-tag">Weekly, bi-weekly, monthly</span>
       </div>
@@ -1049,11 +964,11 @@
       <div class="service-card">
         <div class="service-icon">🧼</div>
         <h3>Deep cleaning Calgary</h3>
-        <p>For homes and condos that need a real reset. This is the right service when a standard clean will not cut it or when you want a stronger first impression.</p>
+        <p>For homes and condos that need more than a routine clean. This is the option when the space needs a stronger reset and more detailed attention.</p>
         <ul class="service-list">
           <li>Ideal for first-time service or seasonal resets</li>
-          <li>Extra attention to buildup, detail areas, and neglected spots</li>
-          <li>Helps bring the space back under control properly</li>
+          <li>Extra attention to neglected and high-impact areas</li>
+          <li>Useful before guests, events, or a fresh restart</li>
         </ul>
         <span class="service-tag">One-time detailed service</span>
       </div>
@@ -1061,23 +976,23 @@
       <div class="service-card">
         <div class="service-icon">📦</div>
         <h3>Move-out cleaning Calgary</h3>
-        <p>For renters, landlords, sellers, and property managers who need the place cleaned properly before inspection, listing photos, turnover, or handoff.</p>
+        <p>For renters, landlords, property managers, and sellers preparing a space for inspection, turnover, new occupants, or listing photos.</p>
         <ul class="service-list">
-          <li>Built for tight timelines and transition periods</li>
-          <li>Helps properties show cleaner and hand over better</li>
-          <li>Useful for rentals, sales prep, and vacant units</li>
+          <li>Built for transitions and tighter timelines</li>
+          <li>Helps properties hand over cleaner and present better</li>
+          <li>Useful for rentals, vacant units, and listings</li>
         </ul>
-        <span class="service-tag">Rentals, listings, turnovers</span>
+        <span class="service-tag">Turnovers, rentals, listings</span>
       </div>
 
       <div class="service-card">
         <div class="service-icon">🏢</div>
         <h3>Commercial and office cleaning Calgary</h3>
-        <p>For business owners, offices, and client-facing workspaces that need a cleaner environment for staff, visitors, and day-to-day operations.</p>
+        <p>For offices and business spaces that need a cleaner environment for staff, visitors, and daily operations without looking neglected or disorganized.</p>
         <ul class="service-list">
-          <li>Supports cleaner presentation and better day-to-day upkeep</li>
-          <li>Suitable for offices, shared workspaces, and commercial interiors</li>
-          <li>Custom scope based on traffic, layout, and schedule</li>
+          <li>Suitable for offices and shared workspaces</li>
+          <li>Custom scope based on layout, traffic, and schedule</li>
+          <li>Helps maintain a more polished working environment</li>
         </ul>
         <span class="service-tag">Offices and business spaces</span>
       </div>
@@ -1095,7 +1010,7 @@
     <div class="checklist-card">
       <div class="section-tag" style="color:#87E0C1;">What's included</div>
       <h3>What’s covered in our Calgary cleaning services</h3>
-      <p>Every quote is tailored, but these are the core areas most clients expect us to handle. The point is simple: cover the surfaces that make the biggest difference to how the space looks, feels, and functions.</p>
+      <p>People want to know what they are actually getting. This section gives a quick answer in a scannable format without burying the basics.</p>
       <div class="checklist-group">
         <div class="checklist-box">
           <strong>Kitchen</strong>
@@ -1137,25 +1052,25 @@
     </div>
 
     <div>
-      <div class="section-tag">Why choose Getcleanr</div>
-      <h2>People book us because they want fewer headaches, not just cleaner floors.</h2>
-      <p class="section-sub">The buying decision is not just about price. Most people want a cleaning company that replies quickly, gives a clear quote, shows up as expected, and leaves the space looking like it was actually looked after.</p>
+      <div class="section-tag">Why people book</div>
+      <h2>People do not just want “cleaning.” They want less hassle.</h2>
+      <p class="section-sub">Most buyers are looking for the same practical things: a cleaner space, straightforward pricing, easy scheduling, and a company that feels legitimate.</p>
       <div class="reasons-grid" style="margin-top: 1.8rem;">
         <div class="reason-card">
-          <h3>Reliable show-ups</h3>
-          <p>Cleaning only helps when the service is dependable. That matters just as much as the actual result.</p>
+          <h3>Clear next step</h3>
+          <p>The page makes it obvious how to request a quote without hunting around for the form.</p>
         </div>
         <div class="reason-card">
-          <h3>Fast communication</h3>
-          <p>Quote requests, scheduling, and follow-ups should not drag on. We keep the process straightforward.</p>
+          <h3>Specific services</h3>
+          <p>Visitors can quickly tell whether you handle homes, offices, condos, or move-out projects.</p>
         </div>
         <div class="reason-card">
-          <h3>Custom quotes, not guesswork</h3>
-          <p>Your pricing should reflect the size, condition, and type of space instead of a one-size-fits-all estimate.</p>
+          <h3>Honest trust signals</h3>
+          <p>No fake reviews or inflated stats. Just credible, supportable claims that make the business feel real.</p>
         </div>
         <div class="reason-card">
-          <h3>Eco-conscious products</h3>
-          <p>A better fit for families, pets, and workplaces that want a cleaner result without heavy residue or harsh smells.</p>
+          <h3>Scannable content</h3>
+          <p>Short sections, better hierarchy, and clearer buttons make the page easier to use on desktop and mobile.</p>
         </div>
       </div>
       <div class="inline-cta-wrap">
@@ -1168,23 +1083,23 @@
 <section class="steps">
   <div class="section-wrap">
     <div class="section-tag">How it works</div>
-    <h2>Simple quote process. No drawn-out back and forth.</h2>
-    <p class="section-sub">Whether you need house cleaning in Calgary, office cleaning, or a move-out clean, the process should be quick and easy to understand.</p>
+    <h2>One clear path from visit to inquiry</h2>
+    <p class="section-sub">This section stays because people want a quick mental model of how the process works before they hand over their contact details.</p>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">1</div>
         <h3>Tell us about the space</h3>
-        <p>Share the property type, size, service needed, and any details that matter. We use that to scope the work properly.</p>
+        <p>Share the property type, service needed, and any details that matter.</p>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
-        <h3>Receive a clear quote</h3>
-        <p>We review your request and send pricing based on the actual scope, not generic package assumptions.</p>
+        <h3>Receive your quote</h3>
+        <p>We review the request and send pricing based on the scope of work.</p>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
-        <h3>Book with confidence</h3>
-        <p>Approve the quote, lock in your cleaning date, and get on with your week knowing the service is handled.</p>
+        <h3>Book your cleaning</h3>
+        <p>Approve the quote, confirm a time, and get the service scheduled.</p>
       </div>
     </div>
   </div>
@@ -1194,21 +1109,25 @@
   <div class="section-wrap">
     <div class="guarantee-head">
       <div class="section-tag">Reassurance</div>
-      <h2>A cleaner, lower-friction experience from the first message onward</h2>
-      <p class="section-sub">This is not about making wild promises. It is about reducing the usual risk people feel when hiring a cleaning company.</p>
+      <h2>Strong reassurance beats exaggerated promises</h2>
+      <p class="section-sub">This is where you lower hesitation without pretending to be something you cannot prove.</p>
     </div>
     <div class="guarantee-grid">
       <div class="guarantee-card">
         <h3>Clear communication</h3>
-        <p>You should know what service you are booking, what the quote covers, and what happens next.</p>
+        <p>Visitors should know what service they are booking and what happens next.</p>
       </div>
       <div class="guarantee-card">
-        <h3>Dependable scheduling</h3>
-        <p>Whether it is a recurring home clean or a commercial visit, the schedule needs to work in the real world.</p>
+        <h3>Custom pricing</h3>
+        <p>Quotes are based on the type of cleaning and the space itself, not one-size-fits-all assumptions.</p>
       </div>
       <div class="guarantee-card">
-        <h3>Service that aims to get it right</h3>
-        <p>We focus on detailed work, responsive support, and a finished result that feels worth paying for.</p>
+        <h3>Service tailored to the job</h3>
+        <p>Homes, offices, condos, and move-outs need different scopes. The page reflects that clearly.</p>
+      </div>
+      <div class="guarantee-card">
+        <h3>Cleaner mobile experience</h3>
+        <p>Important content sits higher on the page, with obvious actions and simpler scanning.</p>
       </div>
     </div>
   </div>
@@ -1218,8 +1137,8 @@
   <div class="section-wrap">
     <div class="faq-head">
       <div class="section-tag">FAQ</div>
-      <h2>Questions we hear from Calgary homeowners and businesses</h2>
-      <p class="section-sub">These are the practical questions people ask before they book house cleaning, condo cleaning, commercial cleaning, or move-out cleaning in Calgary.</p>
+      <h2>Questions people ask before they book</h2>
+      <p class="section-sub">Good FAQ sections remove friction, clarify expectations, and save the visitor from having to guess.</p>
     </div>
     <div class="faq-grid">
       <div class="faq-card">
@@ -1232,7 +1151,7 @@
       </div>
       <div class="faq-card">
         <h3>Do you clean both homes and businesses?</h3>
-        <p>Yes. Getcleanr provides Calgary cleaning services for homes, condos, offices, and other business spaces, with custom scopes depending on the property.</p>
+        <p>Yes. Getcleanr provides Calgary cleaning services for homes, condos, offices, and other business spaces.</p>
       </div>
       <div class="faq-card">
         <h3>What areas do you serve?</h3>
@@ -1247,11 +1166,11 @@
     <div class="contact-head">
       <div class="section-tag">Get a quote</div>
       <h2>Request your Calgary cleaning quote</h2>
-      <p class="section-sub">Tell us about your home, condo, office, or move-out project and we’ll send pricing based on the space and service you need.</p>
+      <p class="section-sub">We cut the form down so it asks for the essentials first. That makes it easier to complete and easier for you to follow up on.</p>
       <div class="contact-trust">
-        <span>Fast quote replies</span>
-        <span>Custom pricing</span>
-        <span>Residential and commercial</span>
+        <span>Name and contact details</span>
+        <span>Service type</span>
+        <span>Space details in your own words</span>
       </div>
     </div>
 
@@ -1267,7 +1186,7 @@
       </div>
 
       <div class="form-row">
-        <input class="form-input" type="tel" name="phone" placeholder="Phone number">
+        <input class="form-input" type="tel" name="phone" placeholder="Phone number" required>
         <select class="form-input" name="service" required>
           <option value="" disabled selected>Type of service</option>
           <option>Recurring home cleaning</option>
@@ -1277,58 +1196,7 @@
         </select>
       </div>
 
-      <div class="form-row">
-        <select class="form-input" name="bedrooms">
-          <option value="" disabled selected>Bedrooms</option>
-          <option>Studio</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4+</option>
-        </select>
-        <select class="form-input" name="bathrooms">
-          <option value="" disabled selected>Bathrooms</option>
-          <option>1</option>
-          <option>1.5</option>
-          <option>2</option>
-          <option>3+</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <select class="form-input" name="square_footage">
-          <option value="" disabled selected>Approx. square footage</option>
-          <option>Under 1,000 sq ft</option>
-          <option>1,000–1,500 sq ft</option>
-          <option>1,500–2,000 sq ft</option>
-          <option>2,000–3,000 sq ft</option>
-          <option>3,000+ sq ft</option>
-        </select>
-        <div>
-          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.72); margin-bottom: 0.4rem;">Preferred date</div>
-          <input class="form-input" type="date" name="preferred_date" aria-label="Preferred date">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <select class="form-input" name="pets">
-          <option value="" disabled selected>Pets</option>
-          <option>None</option>
-          <option>Dog(s)</option>
-          <option>Cat(s)</option>
-          <option>Multiple pets</option>
-        </select>
-        <select class="form-input" name="lead_source">
-          <option value="" disabled selected>How did you find us?</option>
-          <option>Google</option>
-          <option>Referral</option>
-          <option>Facebook</option>
-          <option>Instagram</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <textarea class="form-input" rows="5" name="message" placeholder="Tell us about your space, timeline, and what kind of cleaning you need." required></textarea>
+      <textarea class="form-input" rows="6" name="message" placeholder="Tell us about your space, approximate size, timeline, and anything important we should know." required></textarea>
 
       <button class="form-submit" type="submit">Send my quote request</button>
     </form>
@@ -1359,7 +1227,7 @@
     <div class="footer-col footer-links">
       <a href="#">Home</a>
       <a href="#services">Services</a>
-      <a href="#trust">Why Getcleanr</a>
+      <a href="#why">Why Getcleanr</a>
       <a href="#included">What's Included</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
