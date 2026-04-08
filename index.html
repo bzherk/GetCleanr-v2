@@ -1166,11 +1166,11 @@
     <div class="contact-head">
       <div class="section-tag">Get a quote</div>
       <h2>Request your Calgary cleaning quote</h2>
-      <p class="section-sub">We cut the form down so it asks for the essentials first. That makes it easier to complete and easier for you to follow up on.</p>
+      <p class="section-sub">We kept the page cleaner, but restored the original quote detail fields so you still collect the information you need to price jobs properly.</p>
       <div class="contact-trust">
         <span>Name and contact details</span>
         <span>Service type</span>
-        <span>Space details in your own words</span>
+        <span>Property details for quoting</span>
       </div>
     </div>
 
@@ -1186,13 +1186,64 @@
       </div>
 
       <div class="form-row">
-        <input class="form-input" type="tel" name="phone" placeholder="Phone number" required>
+        <input class="form-input" type="tel" name="phone" placeholder="Phone number">
         <select class="form-input" name="service" required>
           <option value="" disabled selected>Type of service</option>
           <option>Recurring home cleaning</option>
           <option>Deep cleaning</option>
           <option>Move-in / Move-out</option>
           <option>Commercial cleaning</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <select class="form-input" name="bedrooms">
+          <option value="" disabled selected>Bedrooms</option>
+          <option>Studio</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+        <select class="form-input" name="bathrooms">
+          <option value="" disabled selected>Bathrooms</option>
+          <option>1</option>
+          <option>1.5</option>
+          <option>2</option>
+          <option>3+</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <select class="form-input" name="square_footage">
+          <option value="" disabled selected>Approx. square footage</option>
+          <option>Under 1,000 sq ft</option>
+          <option>1,000–1,500 sq ft</option>
+          <option>1,500–2,000 sq ft</option>
+          <option>2,000–3,000 sq ft</option>
+          <option>3,000+ sq ft</option>
+        </select>
+        <div>
+          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.72); margin-bottom: 0.4rem;">Preferred date</div>
+          <input class="form-input" type="date" name="preferred_date" aria-label="Preferred date">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <select class="form-input" name="pets">
+          <option value="" disabled selected>Pets</option>
+          <option>None</option>
+          <option>Dog(s)</option>
+          <option>Cat(s)</option>
+          <option>Multiple pets</option>
+        </select>
+        <select class="form-input" name="lead_source">
+          <option value="" disabled selected>How did you find us?</option>
+          <option>Google</option>
+          <option>Referral</option>
+          <option>Facebook</option>
+          <option>Instagram</option>
+          <option>Other</option>
         </select>
       </div>
 
@@ -1240,3 +1291,4 @@
 </footer>
 </body>
 </html>
+
