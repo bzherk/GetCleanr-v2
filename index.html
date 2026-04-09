@@ -806,6 +806,145 @@
     color: rgba(255,255,255,0.48);
   }
 
+  .checklist-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    box-sizing: border-box;
+  }
+
+  .checklist-modal.is-open {
+    display: flex;
+  }
+
+  .checklist-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(38, 37, 33, 0.58);
+    cursor: pointer;
+  }
+
+  .checklist-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: min(720px, 100%);
+    max-height: min(92vh, 880px);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #FBF8F3 0%, var(--cream) 55%, #F7F1E7 100%);
+    color: var(--charcoal);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .checklist-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: rgba(29, 158, 117, 0.14);
+    color: var(--teal-dark);
+    font-size: 1.35rem;
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  }
+
+  .checklist-modal__close:hover {
+    background: rgba(29, 158, 117, 0.24);
+    color: var(--charcoal);
+  }
+
+  .checklist-modal__close:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.35);
+  }
+
+  .checklist-modal__header {
+    flex-shrink: 0;
+    padding: 1.75rem 3.25rem 1rem 1.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .checklist-modal__header::before {
+    content: "";
+    display: block;
+    width: 2.75rem;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--teal);
+    margin-bottom: 0.85rem;
+    opacity: 0.85;
+  }
+
+  .checklist-modal__title {
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.45rem;
+    color: var(--charcoal);
+  }
+
+  .checklist-modal__subtitle {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--mid);
+    max-width: 36rem;
+  }
+
+  .checklist-modal__body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 1.25rem 1.35rem;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .checklist-modal__body img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .checklist-modal {
+      padding: 0.85rem;
+      align-items: flex-end;
+    }
+
+    .checklist-modal__dialog {
+      max-height: 94vh;
+      border-radius: 22px 22px var(--radius-xl) var(--radius-xl);
+    }
+
+    .checklist-modal__header {
+      padding: 1.5rem 3rem 0.85rem 1.25rem;
+    }
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
@@ -987,7 +1126,7 @@
 
     <div class="inline-cta-wrap" style="justify-content:center; margin-top: 2rem;">
       <a class="inline-cta" href="#contact">Request a Quote</a>
-      <a class="btn-secondary" href="#included">See what's included</a>
+      <a class="btn-secondary" id="checklist-modal-open" href="#included">See what's included</a>
     </div>
   </div>
 </section>
@@ -1273,6 +1412,68 @@
     <p>© 2026 Getcleanr. All rights reserved.</p>
   </div>
 </footer>
+
+<div id="checklist-modal" class="checklist-modal" role="dialog" aria-modal="true" aria-labelledby="checklist-modal-title" aria-describedby="checklist-modal-desc" hidden>
+  <div class="checklist-modal__backdrop" data-checklist-modal-dismiss tabindex="-1"></div>
+  <div class="checklist-modal__dialog">
+    <button type="button" class="checklist-modal__close" aria-label="Close checklist" data-checklist-modal-close>&times;</button>
+    <div class="checklist-modal__header">
+      <h2 id="checklist-modal-title" class="checklist-modal__title">Cleaning Checklist</h2>
+      <p id="checklist-modal-desc" class="checklist-modal__subtitle">Compare what’s included in Standard, Deep, and Move-In / Move-Out cleaning.</p>
+    </div>
+    <div class="checklist-modal__body">
+      <img src="IMG_2322.jpeg" alt="Cleaning checklist: Standard, Deep, and Move-In / Move-Out services compared." loading="lazy" decoding="async">
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var openBtn = document.getElementById('checklist-modal-open');
+  var modal = document.getElementById('checklist-modal');
+  if (!openBtn || !modal) return;
+
+  var backdrop = modal.querySelector('[data-checklist-modal-dismiss]');
+  var closeBtn = modal.querySelector('[data-checklist-modal-close]');
+
+  function openModal() {
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (openBtn) openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    openModal();
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', function () {
+      closeModal();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+})();
+</script>
 </body>
 </html>
 
