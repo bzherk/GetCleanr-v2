@@ -16,36 +16,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-  .topbar--rotate .topbar__inner {
-    position: relative;
+  /* Home only: thinner bar, softened charcoal, horizontal slide between messages */
+  .topbar.topbar--rotate {
+    padding: 0.38rem 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    background: #2e2d29;
+    color: rgba(255, 255, 255, 0.84);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .topbar--rotate .topbar__viewport {
+    overflow: hidden;
+    width: 100%;
+    max-width: 76ch;
     margin: 0 auto;
-    max-width: 72ch;
-    min-height: 2.85em;
+  }
+
+  .topbar--rotate .topbar__track {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.75s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: transform;
   }
-  .topbar--rotate .topbar__line {
-    position: absolute;
-    left: 0;
-    right: 0;
+
+  .topbar--rotate .topbar__track.is-second {
+    transform: translateX(-50%);
+  }
+
+  .topbar--rotate .topbar__pane {
+    flex: 0 0 50%;
+    width: 50%;
     margin: 0;
-    opacity: 0;
-    transition: opacity 0.55s ease;
-    pointer-events: none;
+    padding: 0 0.35rem;
+    box-sizing: border-box;
+    text-align: center;
   }
-  .topbar--rotate .topbar__line.is-visible {
-    opacity: 1;
-    z-index: 1;
-  }
+
   @media (prefers-reduced-motion: reduce) {
-    .topbar--rotate .topbar__line {
+    .topbar--rotate .topbar__track {
       transition-duration: 0.01ms;
     }
   }
-  @media (max-width: 540px) {
-    .topbar--rotate .topbar__inner {
-      min-height: 4.25em;
+
+  @media (max-width: 768px) {
+    .topbar.topbar--rotate {
+      padding: 0.34rem 0.55rem;
+      font-size: 0.76rem;
     }
   }
 </style>
@@ -53,9 +72,11 @@
 <body class="home">
 
 <div class="topbar topbar--rotate">
-  <div class="topbar__inner">
-    <p class="topbar__line is-visible">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.</p>
-    <p class="topbar__line">10% off your first deep clean — limited time.</p>
+  <div class="topbar__viewport">
+    <div class="topbar__track" id="topbar-rotating-track">
+      <p class="topbar__pane">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.</p>
+      <p class="topbar__pane">10% off your first deep clean. Limited time.</p>
+    </div>
   </div>
 </div>
 
@@ -464,18 +485,12 @@
 </script>
 <script>
 (function () {
-  var root = document.querySelector('.topbar--rotate');
-  if (!root) return;
-  var lines = root.querySelectorAll('.topbar__line');
-  if (lines.length < 2) return;
-  var i = 0;
-  var intervalMs = 4500;
-  function showNext() {
-    lines[i].classList.remove('is-visible');
-    i = (i + 1) % lines.length;
-    lines[i].classList.add('is-visible');
-  }
-  setInterval(showNext, intervalMs);
+  var track = document.getElementById('topbar-rotating-track');
+  if (!track) return;
+  var intervalMs = 10000;
+  setInterval(function () {
+    track.classList.toggle('is-second');
+  }, intervalMs);
 })();
 </script>
 </body>
