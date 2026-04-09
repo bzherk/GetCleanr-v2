@@ -445,6 +445,22 @@
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 
+  .services-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  .services-category-heading {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.32rem);
+    font-weight: 600;
+    color: var(--teal-dark);
+    text-align: center;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.15rem;
+  }
+
   .services-offerings {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -476,7 +492,7 @@
     line-height: 1;
   }
 
-  .service-offering h3 {
+  .service-offering h4 {
     font-size: 1.14rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
@@ -926,37 +942,47 @@
       <p class="section-sub">Professional cleaning services tailored to homes, offices, rentals, and move-in or move-out needs across Calgary.</p>
     </div>
 
-    <div class="services-offerings">
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">🏠</div>
-        <h3>Residential Cleaning</h3>
-        <p>Scheduled upkeep for houses and condos—kitchens, bathrooms, and living areas kept consistently fresh.</p>
-      </article>
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">🏢</div>
-        <h3>Commercial Cleaning</h3>
-        <p>Office and workplace cleaning scoped to your layout, traffic, and hours so your team walks into a polished space.</p>
-      </article>
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">🔑</div>
-        <h3>Short-Term Rental Cleaning</h3>
-        <p>Fast turnarounds between guests with attention to the details visitors notice in short-stay rentals.</p>
-      </article>
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">✨</div>
-        <h3>Deep Cleaning</h3>
-        <p>A full reset when routine cleaning is not enough—ideal before hosting, after a busy season, or when every surface needs extra care.</p>
-      </article>
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">📦</div>
-        <h3>Move-In / Move-Out Cleaning</h3>
-        <p>Detailed cleaning for handoffs, inspections, listings, and new occupants—timed around your move schedule.</p>
-      </article>
-      <article class="service-offering">
-        <div class="service-offering-icon" aria-hidden="true">🌿</div>
-        <h3>Eco-Friendly Cleaning</h3>
-        <p>Gentler products and methods for homes and businesses that want a lighter footprint without sacrificing a thorough clean.</p>
-      </article>
+    <div class="services-categories">
+      <div class="services-category">
+        <h3 class="services-category-heading">Residential Services</h3>
+        <div class="services-offerings">
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">🏠</div>
+            <h4>Residential Cleaning</h4>
+            <p>Scheduled upkeep for houses and condos—kitchens, bathrooms, and living areas kept consistently fresh.</p>
+          </article>
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">✨</div>
+            <h4>Deep Cleaning</h4>
+            <p>A full reset when routine cleaning is not enough—ideal before hosting, after a busy season, or when every surface needs extra care.</p>
+          </article>
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">📦</div>
+            <h4>Move-In / Move-Out Cleaning</h4>
+            <p>Detailed cleaning for handoffs, inspections, listings, and new occupants—timed around your move schedule.</p>
+          </article>
+        </div>
+      </div>
+      <div class="services-category">
+        <h3 class="services-category-heading">Business &amp; Specialty Services</h3>
+        <div class="services-offerings">
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">🏢</div>
+            <h4>Commercial Cleaning</h4>
+            <p>Office and workplace cleaning scoped to your layout, traffic, and hours so your team walks into a polished space.</p>
+          </article>
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">🔑</div>
+            <h4>Short-Term Rental Cleaning</h4>
+            <p>Fast turnarounds between guests with attention to the details visitors notice in short-stay rentals.</p>
+          </article>
+          <article class="service-offering">
+            <div class="service-offering-icon" aria-hidden="true">🌿</div>
+            <h4>Eco-Friendly Cleaning</h4>
+            <p>Gentler products and methods for homes and businesses that want a lighter footprint without sacrificing a thorough clean.</p>
+          </article>
+        </div>
+      </div>
     </div>
 
     <div class="inline-cta-wrap" style="justify-content:center; margin-top: 2rem;">
