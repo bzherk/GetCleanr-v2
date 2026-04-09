@@ -910,23 +910,108 @@
     max-width: 36rem;
   }
 
+  .checklist-modal__tablist {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0.25rem 1.25rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .checklist-modal__tab {
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    min-height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--mid);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .checklist-modal__tab:hover {
+    border-color: rgba(29, 158, 117, 0.35);
+    color: var(--charcoal);
+    background: rgba(225, 245, 238, 0.65);
+  }
+
+  .checklist-modal__tab.is-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(29, 158, 117, 0.22);
+  }
+
+  .checklist-modal__tab:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.35);
+  }
+
+  .checklist-modal__tab.is-active:focus {
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.45), 0 6px 20px rgba(29, 158, 117, 0.22);
+  }
+
   .checklist-modal__body {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    padding: 1rem 1.25rem 1.35rem;
+    padding: 1.1rem 1.25rem 1.5rem;
     background: rgba(255, 255, 255, 0.45);
   }
 
-  .checklist-modal__body img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
+  .checklist-modal__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .checklist-modal__section {
+    background: var(--white);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 1.15rem 1.25rem 1.2rem;
+    box-shadow: 0 8px 26px rgba(17, 33, 28, 0.05);
+  }
+
+  .checklist-modal__section-title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1rem, 2.2vw, 1.12rem);
+    margin: 0 0 0.9rem;
+    color: var(--charcoal);
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(29, 158, 117, 0.22);
+    line-height: 1.3;
+  }
+
+  .checklist-modal__list {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .checklist-modal__list li {
+    position: relative;
+    padding-left: 1.55rem;
+    font-size: 0.9rem;
+    line-height: 1.48;
+    color: var(--mid);
+  }
+
+  .checklist-modal__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0.12em;
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 0.82rem;
   }
 
   @media (max-width: 768px) {
@@ -942,6 +1027,17 @@
 
     .checklist-modal__header {
       padding: 1.5rem 3rem 0.85rem 1.25rem;
+    }
+
+    .checklist-modal__tablist {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 0.85rem;
+    }
+
+    .checklist-modal__body {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 
@@ -1421,8 +1517,189 @@
       <h2 id="checklist-modal-title" class="checklist-modal__title">Cleaning Checklist</h2>
       <p id="checklist-modal-desc" class="checklist-modal__subtitle">Compare what’s included in Standard, Deep, and Move-In / Move-Out cleaning.</p>
     </div>
+    <div class="checklist-modal__tablist" role="tablist" aria-label="Cleaning package type">
+      <button type="button" class="checklist-modal__tab is-active" role="tab" id="checklist-tab-standard" data-checklist-tab="standard" aria-selected="true" aria-controls="checklist-panel-standard">Standard Clean</button>
+      <button type="button" class="checklist-modal__tab" role="tab" id="checklist-tab-deep" data-checklist-tab="deep" aria-selected="false" aria-controls="checklist-panel-deep" tabindex="-1">Deep Clean</button>
+      <button type="button" class="checklist-modal__tab" role="tab" id="checklist-tab-move" data-checklist-tab="move" aria-selected="false" aria-controls="checklist-panel-move" tabindex="-1">Move-In / Move-Out Clean</button>
+    </div>
     <div class="checklist-modal__body">
-      <img src="IMG_2322.jpeg" alt="Cleaning checklist: Standard, Deep, and Move-In / Move-Out services compared." loading="lazy" decoding="async">
+  <div class="checklist-modal__panel" data-checklist-panel="standard" role="tabpanel" id="checklist-panel-standard" aria-labelledby="checklist-tab-standard">
+    <div class="checklist-modal__sections">
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Living Room, Bedrooms &amp; Common Area</h3>
+    <ul class="checklist-modal__list">
+      <li>Wash all countertops</li>
+      <li>Dusting window sills</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Dust baseboards</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Kitchen</h3>
+    <ul class="checklist-modal__list">
+      <li>Dust all accessible surfaces</li>
+      <li>Wash all countertops</li>
+      <li>Wipe backsplash</li>
+      <li>Wipe exterior of appliances</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean the inside &amp; outside of microwave</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe exterior cabinets</li>
+      <li>Wipe outlets &amp; light switches</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Bathroom</h3>
+    <ul class="checklist-modal__list">
+      <li>Polish &amp; clean mirrors</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean towel racks</li>
+      <li>Shine spouts &amp; handles</li>
+      <li>Wash all countertops</li>
+      <li>Sanitize toilets &amp; toilet bowls</li>
+      <li>Clean showers &amp; tubs</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Wipe exterior cabinets</li>
+    </ul>
+    </div>
+    </div>
+  </div>
+  <div class="checklist-modal__panel" data-checklist-panel="deep" role="tabpanel" id="checklist-panel-deep" aria-labelledby="checklist-tab-deep" hidden>
+    <div class="checklist-modal__sections">
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Living Room, Bedrooms &amp; Common Area</h3>
+    <ul class="checklist-modal__list">
+      <li>Wash all countertops</li>
+      <li>Dusting window sills</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Dust baseboards</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Vacuum furniture</li>
+      <li>Dust blinds</li>
+      <li>Dust light fixtures</li>
+      <li>Dust ceiling fans</li>
+      <li>Dust/wipe shelves (ie. inside closet)</li>
+      <li>Wall spot cleaning</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Kitchen</h3>
+    <ul class="checklist-modal__list">
+      <li>Dust all accessible surfaces</li>
+      <li>Wash all countertops</li>
+      <li>Wipe backsplash</li>
+      <li>Wipe exterior of appliances</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean the inside &amp; outside of microwave</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe exterior cabinets</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Dust ceiling fans</li>
+      <li>Wall spot cleaning</li>
+      <li>Dust light fixtures</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Bathroom</h3>
+    <ul class="checklist-modal__list">
+      <li>Polish &amp; clean mirrors</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean towel racks</li>
+      <li>Shine spouts &amp; handles</li>
+      <li>Wash all countertops</li>
+      <li>Sanitize toilets &amp; toilet bowls</li>
+      <li>Clean showers &amp; tubs</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Wipe exterior cabinets</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Dust light fixtures</li>
+      <li>Wall spot cleaning</li>
+      <li>Dust bathroom fan</li>
+    </ul>
+    </div>
+    </div>
+  </div>
+  <div class="checklist-modal__panel" data-checklist-panel="move" role="tabpanel" id="checklist-panel-move" aria-labelledby="checklist-tab-move" hidden>
+    <div class="checklist-modal__sections">
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Living Room, Bedrooms &amp; Common Area</h3>
+    <ul class="checklist-modal__list">
+      <li>Wash all countertops</li>
+      <li>Dusting window sills</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Dust baseboards</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Dust blinds</li>
+      <li>Dust light fixtures</li>
+      <li>Dust ceiling fans</li>
+      <li>Dust/wipe shelves (ie. inside closet)</li>
+      <li>Wall spot cleaning</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Kitchen</h3>
+    <ul class="checklist-modal__list">
+      <li>Dust all accessible surfaces</li>
+      <li>Wash all countertops</li>
+      <li>Wipe backsplash</li>
+      <li>Wipe exterior of appliances</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean the inside &amp; outside of microwave</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe exterior cabinets</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Dust ceiling fans</li>
+      <li>Wall spot cleaning</li>
+      <li>Dust light fixtures</li>
+      <li>Inside oven</li>
+      <li>Inside fridge</li>
+      <li>Wipe inside cupboards &amp; drawers</li>
+    </ul>
+    </div>
+    <div class="checklist-modal__section">
+      <h3 class="checklist-modal__section-title">Bathroom</h3>
+    <ul class="checklist-modal__list">
+      <li>Polish &amp; clean mirrors</li>
+      <li>Clean &amp; wash sinks</li>
+      <li>Clean towel racks</li>
+      <li>Shine spouts &amp; handles</li>
+      <li>Wash all countertops</li>
+      <li>Sanitize toilets &amp; toilet bowls</li>
+      <li>Clean showers &amp; tubs</li>
+      <li>Empty &amp; replace garbage can bags</li>
+      <li>Vacuum &amp; mop all floor surfaces</li>
+      <li>Dust baseboards</li>
+      <li>Wipe outlets &amp; light switches</li>
+      <li>Wipe exterior cabinets</li>
+      <li>Wipe doors &amp; frames</li>
+      <li>Dust light fixtures</li>
+      <li>Wall spot cleaning</li>
+      <li>Dust bathroom fan</li>
+      <li>Wipe inside cupboards &amp; drawers</li>
+    </ul>
+    </div>
+    </div>
+  </div>
     </div>
   </div>
 </div>
@@ -1436,10 +1713,34 @@
   var backdrop = modal.querySelector('[data-checklist-modal-dismiss]');
   var closeBtn = modal.querySelector('[data-checklist-modal-close]');
 
+  var tabBtns = modal.querySelectorAll('[data-checklist-tab]');
+  var panels = modal.querySelectorAll('[data-checklist-panel]');
+
+  function setTab(id) {
+    tabBtns.forEach(function (btn) {
+      var match = btn.getAttribute('data-checklist-tab') === id;
+      btn.classList.toggle('is-active', match);
+      btn.setAttribute('aria-selected', match ? 'true' : 'false');
+      btn.setAttribute('tabindex', match ? '0' : '-1');
+    });
+    panels.forEach(function (panel) {
+      var match = panel.getAttribute('data-checklist-panel') === id;
+      panel.hidden = !match;
+    });
+  }
+
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setTab(btn.getAttribute('data-checklist-tab'));
+      btn.focus();
+    });
+  });
+
   function openModal() {
     modal.hidden = false;
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    setTab('standard');
     if (closeBtn) closeBtn.focus();
   }
 
