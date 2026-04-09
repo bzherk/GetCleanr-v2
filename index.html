@@ -16,10 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-  /* Home only: thinner bar, softened charcoal, horizontal slide between messages */
-  .topbar.topbar--rotate {
-    padding: 0.38rem 0.85rem;
-    font-size: 0.8rem;
+  /* Home only: thin bar + seamless CSS ticker */
+  .topbar.topbar--ticker {
+    padding: 0.3rem 0;
+    font-size: 0.78rem;
     line-height: 1.35;
     letter-spacing: 0.015em;
     background: #2e2d29;
@@ -27,55 +27,72 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .topbar--rotate .topbar__viewport {
+  .topbar--ticker .topbar__ticker-mask {
     overflow: hidden;
     width: 100%;
-    max-width: 76ch;
-    margin: 0 auto;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-size: 100% 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-size: 100% 100%;
   }
 
-  .topbar--rotate .topbar__track {
+  .topbar--ticker .topbar__ticker-track {
     display: flex;
-    width: 200%;
-    transform: translateX(0);
-    transition: transform 0.75s cubic-bezier(0.33, 1, 0.68, 1);
+    width: max-content;
+    animation: topbar-ticker-scroll 58s linear infinite;
     will-change: transform;
   }
 
-  .topbar--rotate .topbar__track.is-second {
-    transform: translateX(-50%);
+  .topbar--ticker .topbar__ticker-segment {
+    flex-shrink: 0;
+    padding: 0 2.5rem;
+    white-space: nowrap;
   }
 
-  .topbar--rotate .topbar__pane {
-    flex: 0 0 50%;
-    width: 50%;
-    margin: 0;
-    padding: 0 0.35rem;
-    box-sizing: border-box;
-    text-align: center;
+  @keyframes topbar-ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .topbar--rotate .topbar__track {
-      transition-duration: 0.01ms;
+    .topbar--ticker .topbar__ticker-track {
+      animation: none;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+    .topbar--ticker .topbar__ticker-segment {
+      white-space: normal;
+      padding: 0 0.85rem;
+    }
+    .topbar--ticker .topbar__ticker-segment--duplicate {
+      display: none;
+    }
+    .topbar--ticker .topbar__ticker-mask {
+      mask-image: none;
+      -webkit-mask-image: none;
     }
   }
 
   @media (max-width: 768px) {
-    .topbar.topbar--rotate {
-      padding: 0.34rem 0.55rem;
-      font-size: 0.76rem;
+    .topbar.topbar--ticker {
+      padding: 0.28rem 0;
+      font-size: 0.74rem;
+    }
+    .topbar--ticker .topbar__ticker-segment {
+      padding: 0 1.75rem;
     }
   }
 </style>
 </head>
 <body class="home">
 
-<div class="topbar topbar--rotate">
-  <div class="topbar__viewport">
-    <div class="topbar__track" id="topbar-rotating-track">
-      <p class="topbar__pane">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.</p>
-      <p class="topbar__pane">Save 10% on your first deep clean — limited time offer</p>
+<div class="topbar topbar--ticker">
+  <div class="topbar__ticker-mask">
+    <div class="topbar__ticker-track">
+      <span class="topbar__ticker-segment">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;Save 10% on your first deep clean — limited time offer.</span>
+      <span class="topbar__ticker-segment topbar__ticker-segment--duplicate" aria-hidden="true">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;Save 10% on your first deep clean — limited time offer.</span>
     </div>
   </div>
 </div>
@@ -481,16 +498,6 @@
       closeModal();
     }
   });
-})();
-</script>
-<script>
-(function () {
-  var track = document.getElementById('topbar-rotating-track');
-  if (!track) return;
-  var intervalMs = 10000;
-  setInterval(function () {
-    track.classList.toggle('is-second');
-  }, intervalMs);
 })();
 </script>
 </body>
