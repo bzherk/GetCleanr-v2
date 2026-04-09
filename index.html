@@ -15,10 +15,49 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
+<style>
+  .topbar--rotate .topbar__inner {
+    position: relative;
+    margin: 0 auto;
+    max-width: 72ch;
+    min-height: 2.85em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .topbar--rotate .topbar__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.55s ease;
+    pointer-events: none;
+  }
+  .topbar--rotate .topbar__line.is-visible {
+    opacity: 1;
+    z-index: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .topbar--rotate .topbar__line {
+      transition-duration: 0.01ms;
+    }
+  }
+  @media (max-width: 540px) {
+    .topbar--rotate .topbar__inner {
+      min-height: 4.25em;
+    }
+  }
+</style>
 </head>
 <body class="home">
 
-<div class="topbar">Serving Calgary, Alberta including downtown, NW, SW, SE, and surrounding areas.</div>
+<div class="topbar topbar--rotate">
+  <div class="topbar__inner">
+    <p class="topbar__line is-visible">Serving Calgary, Alberta including downtown, NW, NE, SW, SE, and surrounding areas.</p>
+    <p class="topbar__line">10% off your first deep clean — limited time.</p>
+  </div>
+</div>
 
 <nav>
   <div class="logo">
@@ -421,6 +460,22 @@
       closeModal();
     }
   });
+})();
+</script>
+<script>
+(function () {
+  var root = document.querySelector('.topbar--rotate');
+  if (!root) return;
+  var lines = root.querySelectorAll('.topbar__line');
+  if (lines.length < 2) return;
+  var i = 0;
+  var intervalMs = 4500;
+  function showNext() {
+    lines[i].classList.remove('is-visible');
+    i = (i + 1) % lines.length;
+    lines[i].classList.add('is-visible');
+  }
+  setInterval(showNext, intervalMs);
 })();
 </script>
 </body>
