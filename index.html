@@ -430,7 +430,6 @@
     margin: 0 auto;
   }
 
-  .services-grid,
   .reasons-grid,
   .faq-grid,
   .trust-grid,
@@ -441,13 +440,56 @@
   }
 
   .trust-grid,
-  .services-grid,
   .value-grid,
   .guarantee-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 
-  .service-card,
+  .services-offerings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.35rem;
+  }
+
+  .service-offering {
+    background: linear-gradient(180deg, rgba(241, 251, 247, 0.75) 0%, rgba(255, 255, 255, 0.98) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.45rem 1.55rem;
+    box-shadow: 0 8px 22px rgba(20, 25, 22, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 10.5rem;
+  }
+
+  .service-offering-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--teal-light);
+    margin-bottom: 0.95rem;
+    font-size: 1.28rem;
+    line-height: 1;
+  }
+
+  .service-offering h3 {
+    font-size: 1.14rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .service-offering p {
+    color: var(--mid);
+    font-size: 0.9rem;
+    line-height: 1.58;
+    margin: 0;
+    flex: 1;
+  }
+
   .reason-card,
   .faq-card,
   .trust-card,
@@ -458,10 +500,6 @@
     border-radius: var(--radius-lg);
     padding: 1.7rem;
     box-shadow: 0 10px 24px rgba(20, 25, 22, 0.04);
-  }
-
-  .service-card {
-    background: linear-gradient(180deg, rgba(241, 251, 247, 0.9) 0%, rgba(255,255,255,0.95) 100%);
   }
 
   .trust-card strong,
@@ -480,19 +518,6 @@
     display: block;
   }
 
-  .service-icon {
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    background: var(--teal-light);
-    margin-bottom: 1rem;
-    font-size: 1.35rem;
-  }
-
-  .service-card h3,
   .reason-card h3,
   .faq-card h3,
   .guarantee-card h3 {
@@ -500,7 +525,6 @@
     margin-bottom: 0.6rem;
   }
 
-  .service-card p,
   .reason-card p,
   .faq-card p,
   .guarantee-card p,
@@ -508,37 +532,6 @@
     color: var(--mid);
     line-height: 1.65;
     font-size: 0.94rem;
-  }
-
-  .service-list {
-    list-style: none;
-    display: grid;
-    gap: 0.45rem;
-    margin-top: 1rem;
-  }
-
-  .service-list li {
-    color: var(--mid);
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-
-  .service-list li::before {
-    content: "•";
-    color: var(--teal);
-    margin-right: 0.45rem;
-    font-weight: 700;
-  }
-
-  .service-tag {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--teal-dark);
-    background: rgba(29, 158, 117, 0.12);
-    border-radius: 999px;
-    padding: 0.32rem 0.75rem;
   }
 
   .split {
@@ -810,10 +803,13 @@
     .guarantee-grid,
     .footer-inner { grid-template-columns: 1fr; }
 
-    .services-grid,
     .reasons-grid,
     .trust-grid,
-    .value-grid,
+    .value-grid { grid-template-columns: 1fr 1fr; }
+
+    .services-offerings {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
@@ -832,12 +828,12 @@
     .panel-grid,
     .checklist-group,
     .form-row,
-    .services-grid,
     .reasons-grid,
     .faq-grid,
     .trust-grid,
     .value-grid,
-    .guarantee-grid { grid-template-columns: 1fr; }
+    .guarantee-grid,
+    .services-offerings { grid-template-columns: 1fr; }
 
     .topbar { font-size: 0.78rem; }
   }
@@ -866,16 +862,10 @@
 <section class="hero">
   <div class="hero-copy">
     <h1>Reliable cleaning in Calgary for homes, condos, offices, move-in and move-out.</h1>
-    <p>We work with homeowners, renters, landlords, realtors and businesses across Calgary. Whether you need regular home cleaning, a deep clean, office cleaning, or a move-out service, you can expect detailed work, clear communication, and a quote without the runaround.</p>
+    <p>We work with homeowners, renters, landlords, realtors, and businesses across Calgary. Whether you need regular home cleaning, a deep clean, office cleaning, or a move-out service, you can expect detailed work, clear communication, and a straightforward quote.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#contact">Request a Quote</a>
       <a class="btn-secondary" href="#services">View services</a>
-    </div>
-    <div class="hero-micro">
-      <span>Insured and bonded</span>
-      <span>Residential and commercial</span>
-      <span>Custom cleaning plans</span>
-      <span>Local Calgary service</span>
     </div>
   </div>
 </section>
@@ -932,58 +922,41 @@
   <div class="section-wrap">
     <div class="services-head">
       <div class="section-tag">Services</div>
-      <h2>Calgary cleaning services built around the job that actually needs doing</h2>
-      <p class="section-sub">Most visitors are trying to answer one question fast: “Do these people handle my kind of cleaning?” This section answers that clearly and without wasted words.</p>
+      <h2>Our Cleaning Services</h2>
+      <p class="section-sub">Professional cleaning services tailored to homes, offices, rentals, and move-in or move-out needs across Calgary.</p>
     </div>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <h3>Recurring house cleaning Calgary</h3>
-        <p>For busy homeowners and renters who want kitchens, bathrooms, bedrooms, and living areas kept under control on an ongoing basis.</p>
-        <ul class="service-list">
-          <li>Best for weekly, bi-weekly, or monthly upkeep</li>
-          <li>Helps reduce buildup and constant reset work</li>
-          <li>Good fit for families and working professionals</li>
-        </ul>
-        <span class="service-tag">Weekly, bi-weekly, monthly</span>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🧼</div>
-        <h3>Deep cleaning Calgary</h3>
-        <p>For homes and condos that need more than a routine clean. This is the option when the space needs a stronger reset and more detailed attention.</p>
-        <ul class="service-list">
-          <li>Ideal for first-time service or seasonal resets</li>
-          <li>Extra attention to neglected and high-impact areas</li>
-          <li>Useful before guests, events, or a fresh restart</li>
-        </ul>
-        <span class="service-tag">One-time detailed service</span>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">📦</div>
-        <h3>Move-out cleaning Calgary</h3>
-        <p>For renters, landlords, property managers, and sellers preparing a space for inspection, turnover, new occupants, or listing photos.</p>
-        <ul class="service-list">
-          <li>Built for transitions and tighter timelines</li>
-          <li>Helps properties hand over cleaner and present better</li>
-          <li>Useful for rentals, vacant units, and listings</li>
-        </ul>
-        <span class="service-tag">Turnovers, rentals, listings</span>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🏢</div>
-        <h3>Commercial and office cleaning Calgary</h3>
-        <p>For offices and business spaces that need a cleaner environment for staff, visitors, and daily operations without looking neglected or disorganized.</p>
-        <ul class="service-list">
-          <li>Suitable for offices and shared workspaces</li>
-          <li>Custom scope based on layout, traffic, and schedule</li>
-          <li>Helps maintain a more polished working environment</li>
-        </ul>
-        <span class="service-tag">Offices and business spaces</span>
-      </div>
+    <div class="services-offerings">
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">🏠</div>
+        <h3>Residential Cleaning</h3>
+        <p>Scheduled upkeep for houses and condos—kitchens, bathrooms, and living areas kept consistently fresh.</p>
+      </article>
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">🏢</div>
+        <h3>Commercial Cleaning</h3>
+        <p>Office and workplace cleaning scoped to your layout, traffic, and hours so your team walks into a polished space.</p>
+      </article>
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">🔑</div>
+        <h3>Short-Term Rental Cleaning</h3>
+        <p>Fast turnarounds between guests with attention to the details visitors notice in short-stay rentals.</p>
+      </article>
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">✨</div>
+        <h3>Deep Cleaning</h3>
+        <p>A full reset when routine cleaning is not enough—ideal before hosting, after a busy season, or when every surface needs extra care.</p>
+      </article>
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">📦</div>
+        <h3>Move-In / Move-Out Cleaning</h3>
+        <p>Detailed cleaning for handoffs, inspections, listings, and new occupants—timed around your move schedule.</p>
+      </article>
+      <article class="service-offering">
+        <div class="service-offering-icon" aria-hidden="true">🌿</div>
+        <h3>Eco-Friendly Cleaning</h3>
+        <p>Gentler products and methods for homes and businesses that want a lighter footprint without sacrificing a thorough clean.</p>
+      </article>
     </div>
 
     <div class="inline-cta-wrap" style="justify-content:center; margin-top: 2rem;">
