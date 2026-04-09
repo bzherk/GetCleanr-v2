@@ -28,8 +28,14 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Fraunces", serif;
+  h1, h2, h3, h4, h5, h6,
+  .panel-title,
+  .services-category-heading,
+  .trust-card strong,
+  .value-card strong,
+  .footer-logo,
+  .checklist-compare-card__title {
+    font-family: "Playfair Display", serif;
   }
 
   a { color: inherit; }
@@ -310,7 +316,6 @@
 
   .panel-title {
     max-width: 320px;
-    font-family: "Fraunces", serif;
     font-size: 2rem;
     line-height: 1.05;
   }
@@ -434,7 +439,6 @@
   }
 
   .services-category-heading {
-    font-family: "Fraunces", serif;
     font-size: clamp(1.15rem, 2.2vw, 1.32rem);
     font-weight: 600;
     color: var(--teal-dark);
@@ -503,7 +507,6 @@
   .trust-card strong,
   .value-card strong {
     display: block;
-    font-family: "Fraunces", serif;
     font-size: 1.22rem;
     margin-bottom: 0.45rem;
   }
@@ -735,7 +738,6 @@
   }
 
   .footer-logo {
-    font-family: "Fraunces", serif;
     font-size: 1.8rem;
     color: var(--white);
     margin-bottom: 0.6rem;
@@ -928,7 +930,6 @@
   }
 
   .checklist-compare-card__title {
-    font-family: "Fraunces", serif;
     font-size: clamp(1.02rem, 2.1vw, 1.14rem);
     font-weight: 700;
     margin: 0 0 1rem;
