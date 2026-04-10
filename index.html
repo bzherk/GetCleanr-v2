@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calgary Cleaning Services | Homes, Condos, Offices, Move-In & Move-Out Cleaning | Getcleanr</title>
 <meta name="description" content="Reliable Calgary cleaning services for homes, condos, offices, and move-outs. Get a fast quote from Getcleanr for recurring, deep, and commercial cleaning.">
-<meta property="og:image" content="https://bzherk.github.io/GetCleanr-v2/preview.jpg?v=1">
+<meta property="og:url" content="https://getcleanr.ca/">
+<meta property="og:image" content="https://getcleanr.ca/preview.jpg?v=1">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -86,7 +87,7 @@
   </div>
 </div>
 
-<nav>
+<nav aria-label="Primary navigation">
   <div class="logo">
     <a href="index.html">
       <img src="getcleanr-logo-tight.png" alt="Getcleanr logo">
@@ -124,6 +125,7 @@
   </div>
 </nav>
 
+<main id="main-content">
 <section class="hero">
   <div class="hero-copy">
     <h1>Reliable cleaning in Calgary for homes, condos, offices, move-in and move-out.</h1>
@@ -186,9 +188,9 @@
       </div>
     </div>
 
-    <div class="inline-cta-wrap" style="justify-content:center; margin-top: 2rem;">
+    <div class="inline-cta-wrap inline-cta-wrap--home-services">
       <a class="inline-cta" href="#contact">Request a Quote</a>
-      <a class="btn-secondary" id="checklist-modal-open" href="#included">See what's included</a>
+      <a class="btn-secondary" id="checklist-modal-open" href="#checklist-modal">See what's included</a>
     </div>
   </div>
 </section>
@@ -231,80 +233,206 @@
       </div>
     </div>
 
-    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <form id="quote-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="82939cad-c95d-423d-b3a6-6d3cef311908">
       <input type="hidden" name="subject" value="New quote request from getcleanr.ca">
       <input type="hidden" name="from_name" value="Getcleanr Website">
-      <input type="checkbox" name="botcheck" style="display:none;">
+      <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <div class="form-row">
-        <input class="form-input" type="text" name="name" placeholder="Your name" required>
-        <input class="form-input" type="email" name="email" placeholder="Email address" required>
-      </div>
-
-      <div class="form-row">
-        <input class="form-input" type="tel" name="phone" placeholder="Phone number">
-        <select class="form-input" name="service" required>
-          <option value="" disabled selected>Type of service</option>
-          <option>Recurring home cleaning</option>
-          <option>Deep cleaning</option>
-          <option>Move-in / Move-out</option>
-          <option>Commercial cleaning</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <select class="form-input" name="bedrooms">
-          <option value="" disabled selected>Bedrooms</option>
-          <option>Studio</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4+</option>
-        </select>
-        <select class="form-input" name="bathrooms">
-          <option value="" disabled selected>Bathrooms</option>
-          <option>1</option>
-          <option>1.5</option>
-          <option>2</option>
-          <option>3+</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <select class="form-input" name="square_footage">
-          <option value="" disabled selected>Approx. square footage</option>
-          <option>Under 1,000 sq ft</option>
-          <option>1,000–1,500 sq ft</option>
-          <option>1,500–2,000 sq ft</option>
-          <option>2,000–3,000 sq ft</option>
-          <option>3,000+ sq ft</option>
-        </select>
-        <div>
-          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.72); margin-bottom: 0.4rem;">Preferred date</div>
-          <input class="form-input" type="date" name="preferred_date" aria-label="Preferred date">
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Contact</legend>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-field-label" for="quote_name">Full name</label>
+            <input class="form-input" id="quote_name" type="text" name="name" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="quote_email">Email</label>
+            <input class="form-input" id="quote_email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+          </div>
         </div>
-      </div>
+        <div class="form-row">
+          <div class="form-field form-field--span-2">
+            <label class="form-field-label" for="quote_phone">Phone <span class="form-label-optional">(optional)</span></label>
+            <input class="form-input" id="quote_phone" type="tel" name="phone" placeholder="Phone number" autocomplete="tel">
+          </div>
+        </div>
+      </fieldset>
 
-      <div class="form-row">
-        <select class="form-input" name="pets">
-          <option value="" disabled selected>Pets</option>
-          <option>None</option>
-          <option>Dog(s)</option>
-          <option>Cat(s)</option>
-          <option>Multiple pets</option>
-        </select>
-        <select class="form-input" name="lead_source">
-          <option value="" disabled selected>How did you find us?</option>
-          <option>Google</option>
-          <option>Referral</option>
-          <option>Facebook</option>
-          <option>Instagram</option>
-          <option>Other</option>
-        </select>
-      </div>
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Property</legend>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-field-label" for="quote_bedrooms">Bedrooms</label>
+            <select class="form-input" id="quote_bedrooms" name="bedrooms">
+              <option value="" disabled selected>Bedrooms</option>
+              <option value="Studio">Studio</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="quote_bathrooms">Bathrooms</label>
+            <select class="form-input" id="quote_bathrooms" name="bathrooms">
+              <option value="" disabled selected>Bathrooms</option>
+              <option value="1">1</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2</option>
+              <option value="3+">3+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-field-label" for="quote_sqft">Approx. square footage</label>
+            <select class="form-input" id="quote_sqft" name="square_footage">
+              <option value="" disabled selected>Approx. square footage</option>
+              <option value="Under 1,000 sq ft">Under 1,000 sq ft</option>
+              <option value="1,000–1,500 sq ft">1,000–1,500 sq ft</option>
+              <option value="1,500–2,000 sq ft">1,500–2,000 sq ft</option>
+              <option value="2,000–3,000 sq ft">2,000–3,000 sq ft</option>
+              <option value="3,000+ sq ft">3,000+ sq ft</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="quote_pets">Pets</label>
+            <select class="form-input" id="quote_pets" name="pets">
+              <option value="" disabled selected>Pets</option>
+              <option value="None">None</option>
+              <option value="Dog(s)">Dog(s)</option>
+              <option value="Cat(s)">Cat(s)</option>
+              <option value="Multiple pets">Multiple pets</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
 
-      <textarea class="form-input" rows="6" name="message" placeholder="Tell us about your space, approximate size, timeline, and anything important we should know." required></textarea>
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Service &amp; timing</legend>
+        <div class="form-field">
+          <label class="form-field-label" for="quote_service">Type of service</label>
+          <select class="form-input" id="quote_service" name="service" required aria-describedby="quote_service_hint">
+            <option value="" disabled selected>Type of service</option>
+            <option value="Recurring home cleaning">Recurring home cleaning</option>
+            <option value="Deep cleaning">Deep cleaning</option>
+            <option value="Move-in / Move-out">Move-in / Move-out</option>
+            <option value="Commercial cleaning">Commercial cleaning</option>
+            <option value="Short-term rental cleaning">Short-term rental cleaning</option>
+          </select>
+        </div>
+        <p class="form-service-hint" id="quote_service_hint">Optional questions below appear based on the service you choose.</p>
+
+        <div class="form-service-panels" aria-live="polite">
+          <div class="form-service-panel" data-service-panel="Recurring home cleaning" hidden>
+            <p class="form-panel-caption">Optional — helps us quote recurring cleans</p>
+            <div class="form-field">
+              <label class="form-field-label" for="cleaning_frequency">Preferred frequency</label>
+              <select class="form-input" id="cleaning_frequency" name="cleaning_frequency">
+                <option value="" selected disabled>Select frequency</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-weekly">Bi-weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-service-panel" data-service-panel="Deep cleaning" hidden>
+            <p class="form-panel-caption">Optional — helps us scope a deep clean</p>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-field-label" for="deep_clean_condition">Current condition</label>
+                <select class="form-input" id="deep_clean_condition" name="deep_clean_condition">
+                  <option value="" selected disabled>Select condition</option>
+                  <option value="Light">Light</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Heavy">Heavy</option>
+                  <option value="Not sure">Not sure</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-field-label" for="first_time_professional_clean">First time with a professional clean?</label>
+                <select class="form-input" id="first_time_professional_clean" name="first_time_professional_clean">
+                  <option value="" selected disabled>Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-service-panel" data-service-panel="Move-in / Move-out" hidden>
+            <p class="form-panel-caption">Optional — move timing</p>
+            <div class="form-field">
+              <label class="form-field-label" for="move_date">Move date</label>
+              <input class="form-input" id="move_date" type="date" name="move_date">
+            </div>
+          </div>
+
+          <div class="form-service-panel" data-service-panel="Commercial cleaning" hidden>
+            <p class="form-panel-caption">Optional — commercial details</p>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-field-label" for="business_name">Business name</label>
+                <input class="form-input" id="business_name" type="text" name="business_name" placeholder="Business or building name">
+              </div>
+              <div class="form-field">
+                <label class="form-field-label" for="commercial_size">Approx. size</label>
+                <select class="form-input" id="commercial_size" name="commercial_size">
+                  <option value="" selected disabled>Select size</option>
+                  <option value="Small (under 1,500 sq ft)">Small (under 1,500 sq ft)</option>
+                  <option value="Medium (1,500–5,000 sq ft)">Medium (1,500–5,000 sq ft)</option>
+                  <option value="Large (5,000+ sq ft)">Large (5,000+ sq ft)</option>
+                  <option value="Not sure">Not sure</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-service-panel" data-service-panel="Short-term rental cleaning" hidden>
+            <p class="form-panel-caption">Optional — turnover cadence</p>
+            <div class="form-field">
+              <label class="form-field-label" for="turnover_frequency">Turnover frequency</label>
+              <select class="form-input" id="turnover_frequency" name="turnover_frequency">
+                <option value="" selected disabled>Select frequency</option>
+                <option value="After each guest stay">After each guest stay</option>
+                <option value="Several times per week">Several times per week</option>
+                <option value="About once per week">About once per week</option>
+                <option value="Less often">Less often</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-field-label" for="preferred_date">Preferred service date <span class="form-label-optional">(optional)</span></label>
+            <input class="form-input" id="preferred_date" type="date" name="preferred_date">
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="quote_lead_source">How did you find us?</label>
+            <select class="form-input" id="quote_lead_source" name="lead_source">
+              <option value="" disabled selected>How did you find us?</option>
+              <option value="Google">Google</option>
+              <option value="Referral">Referral</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">Details</legend>
+        <div class="form-field">
+          <label class="form-field-label" for="quote_message">Anything else we should know?</label>
+          <textarea class="form-input" id="quote_message" rows="6" name="message" placeholder="Tell us about your space, approximate size, timeline, and anything important we should know." required></textarea>
+        </div>
+      </fieldset>
 
       <button class="form-submit" type="submit">Request a Quote</button>
     </form>
@@ -312,6 +440,7 @@
     <div class="contact-note">Email inquiries can also go to info@getcleanr.ca.</div>
   </div>
 </section>
+</main>
 
 <footer class="site-footer">
   <div class="footer-inner">
@@ -554,6 +683,38 @@
   });
 
   restartPass();
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var form = document.getElementById('quote-form');
+  if (!form) return;
+  var serviceSelect = form.querySelector('[name="service"]');
+  var panels = form.querySelectorAll('[data-service-panel]');
+  if (!serviceSelect || !panels.length) return;
+
+  function selectedValue() {
+    var opt = serviceSelect.options[serviceSelect.selectedIndex];
+    return opt && opt.value ? String(opt.value).trim() : '';
+  }
+
+  function syncPanels() {
+    var v = selectedValue();
+    panels.forEach(function (panel) {
+      var raw = panel.getAttribute('data-service-panel') || '';
+      var keys = raw.split('|').map(function (s) { return s.trim(); });
+      var show = keys.indexOf(v) !== -1;
+      if (show) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+    });
+  }
+
+  serviceSelect.addEventListener('change', syncPanels);
+  syncPanels();
 })();
 </script>
 <script src="mobile-nav.js" defer></script>
