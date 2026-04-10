@@ -136,6 +136,7 @@
   .nav-mobile__backdrop {
     position: absolute;
     inset: 0;
+    z-index: 9998;
     background: rgba(38, 37, 33, 0.5);
     backdrop-filter: blur(2px);
   }
@@ -145,6 +146,7 @@
     top: 0;
     right: 0;
     bottom: 0;
+    z-index: 10000;
     width: min(20rem, 88vw);
     padding: 1.35rem 1.25rem 1.5rem;
     background: linear-gradient(180deg, #FBF8F3 0%, var(--cream) 55%, #F7F1E7 100%);
@@ -1219,7 +1221,7 @@
       display: block;
       position: fixed;
       inset: 0;
-      z-index: 1800;
+      z-index: 9999;
       pointer-events: none;
       opacity: 0;
       visibility: hidden;
