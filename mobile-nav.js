@@ -1,9 +1,12 @@
 (function () {
+  'use strict';
   var nav = document.querySelector('nav');
   if (!nav) return;
+
   var toggle = nav.querySelector('.nav-toggle');
   var mobile = document.getElementById('site-nav-mobile');
   var backdrop = mobile && mobile.querySelector('.nav-mobile__backdrop');
+
   if (!toggle || !mobile) return;
 
   function openMenu() {
@@ -22,9 +25,13 @@
     toggle.setAttribute('aria-label', 'Open menu');
   }
 
+  function isOpen() {
+    return mobile.classList.contains('is-open');
+  }
+
   toggle.addEventListener('click', function (e) {
     e.stopPropagation();
-    if (mobile.classList.contains('is-open')) {
+    if (isOpen()) {
       closeMenu();
     } else {
       openMenu();
@@ -40,7 +47,7 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mobile.classList.contains('is-open')) {
+    if (e.key === 'Escape' && isOpen()) {
       closeMenu();
     }
   });
