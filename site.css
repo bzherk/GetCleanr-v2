@@ -75,6 +75,8 @@
     display: flex;
     list-style: none;
     gap: 2rem;
+    justify-content: center;
+    margin: 0 auto;
   }
 
   .nav-links a {
@@ -88,11 +90,11 @@
   .nav-links a:hover { color: var(--teal); }
 
   .nav-desktop-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-content: center;
-    position: relative;
     flex: 1;
+    min-width: 0;
   }
 
   .nav-toggle {
@@ -237,9 +239,8 @@
     padding: 0.7rem 1.35rem;
     font-size: 0.9rem;
     font-weight: 600;
-    margin-left: auto;
-    position: absolute;
-    right: 0;
+    position: static;
+    margin-left: 2rem;
   }
 
   .nav-cta:hover,
