@@ -92,15 +92,36 @@
       <img src="getcleanr-logo-tight.png" alt="Getcleanr logo">
     </a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="why-getcleanr.html">Why Getcleanr</a></li>
-    <li><a href="what-to-expect.html">What to Expect</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="gift-cards.html">Gift Certificates</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a class="nav-cta" href="#contact">Request a Quote</a>
+  <div class="nav-desktop-inner">
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="why-getcleanr.html">Why Getcleanr</a></li>
+      <li><a href="what-to-expect.html">What to Expect</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="gift-cards.html">Gift Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Request a Quote</a>
+  </div>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-mobile" aria-label="Open menu">
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+  </button>
+  <div class="nav-mobile" id="site-nav-mobile" aria-hidden="true">
+    <div class="nav-mobile__backdrop" tabindex="-1"></div>
+    <div class="nav-mobile__panel" aria-label="Main menu">
+      <ul class="nav-mobile__list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="why-getcleanr.html">Why Getcleanr</a></li>
+        <li><a href="what-to-expect.html">What to Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="gift-cards.html">Gift Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-mobile__cta" href="#contact">Request a Quote</a>
+    </div>
+  </div>
 </nav>
 
 <section class="hero">
@@ -535,6 +556,7 @@
   restartPass();
 })();
 </script>
+<script src="mobile-nav.js" defer></script>
 </body>
 </html>
 
