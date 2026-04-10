@@ -1223,6 +1223,8 @@
       padding: 0.5rem 1.2rem;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+      display: flex;
+      align-items: center;
     }
     .logo img { height: 52px; }
     .nav-desktop-inner { display: none !important; }
