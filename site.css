@@ -87,6 +87,7 @@
 
   .nav-links a:hover { color: var(--teal); }
 
+<<<<<<< HEAD
   .nav-desktop-inner {
     display: flex;
     align-items: center;
@@ -212,6 +213,8 @@
     overflow: hidden;
   }
 
+=======
+>>>>>>> parent of a4d463b (mobile hamburger menu)
   .nav-cta,
   .btn-primary,
   .btn-secondary,
@@ -1212,6 +1215,7 @@
 
     nav { padding: 0.5rem 1.2rem; }
     .logo img { height: 52px; }
+<<<<<<< HEAD
     .nav-desktop-inner { display: none !important; }
     .nav-toggle {
       display: inline-flex !important;
@@ -1232,6 +1236,9 @@
       opacity: 1;
       visibility: visible;
     }
+=======
+    .nav-links { display: none; }
+>>>>>>> parent of a4d463b (mobile hamburger menu)
     .hero { padding-top: 3rem; min-height: auto; }
 
     .panel-grid,
@@ -1245,20 +1252,6 @@
     .services-offerings { grid-template-columns: 1fr; }
 
     .topbar { font-size: 0.78rem; }
-  }
-
-  @media (min-width: 769px) {
-    .nav-mobile,
-    .nav-toggle {
-      display: none !important;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .nav-mobile,
-    .nav-mobile__panel {
-      transition-duration: 0.01ms;
-    }
   }
 
   .page-hero {
