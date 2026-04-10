@@ -90,10 +90,9 @@
   .nav-desktop-inner {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    position: relative;
     flex: 1;
-    min-width: 0;
-    justify-content: flex-end;
   }
 
   .nav-toggle {
@@ -239,6 +238,8 @@
     font-size: 0.9rem;
     font-weight: 600;
     margin-left: auto;
+    position: absolute;
+    right: 0;
   }
 
   .nav-cta:hover,
